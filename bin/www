@@ -1,0 +1,77 @@
+#!/usr/bin/env node
+/**
+ * Adapted from: https://github.com/onelogin/onelogin-oidc-node/tree/master/1.%20Auth%20Flow
+ * 
+ */
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('auth-flow:server');
+var http = require('http');
+var https = require('https');
+var fs = require('fs');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = process.env.PORT || '3001';
+app.set('port', port);
+
+
+/**
+ * Create HTTPS server using TLS cert.
+ * NOTE: TLS is required for OIDC callbacks.
+ * Listen on provided port, on all network interfaces.
+ */
+var server;
+var protocol = 'https';
+
+if (protocol === 'http') {
+  server = https.createServer(app);
+} else {
+  server = https.createServer({
+    key: fs.readFileSync(process.env.TLS_KEY_FILE),
+    cert: fs.readFileSync(process.env.TLS_CERT_FILE)
+  }, app);
+}
+server.listen(port, function () {
+  console.log(`Listening on port ${port}! Go to https://${process.env.HOST_NAME}:${port}/`);
+});  
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(`Port ${port} requires elevated privileges`);
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(`Port ${port} is already in use`);
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  debug(`Listening on port ${port}`);
+}

@@ -1,0 +1,19 @@
+<div class="top-nav" >
+<a href="/users/profile">Profile</a> | <a href="/logout">Logout</a>
+</div>
+<h2> 
+  You are successfully signed in as: <b>{{user.displayName}}</b>
+</h2>
+<ul>
+  <li>
+    <p>
+      Try the <a href="/users/profile">profile</a> route to see the full profile for this user.
+    </p>
+  </li>
+  <li>
+    <p>
+      Or <a href="/logout">logout</a> to destroy the local session and revoke the access
+      token on the OpenID provider (OP)
+    </p>
+  </li>
+</ul>

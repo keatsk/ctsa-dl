@@ -1,0 +1,18 @@
+<div class="top-nav">
+<a href="/users">Users</a> | <a href="/logout">Logout</a>
+</div>
+<h1>{{title}}</h1>
+<p><b>User Num:</b> {{user.sub}}</p>
+<p><b>Name:</b> {{user.name}}</p>
+<p><b>Username:</b> {{user.username}}</p>
+<p><b>Roles:</b> {{user.roles}}</p>
+<hr />
+<h2>DEBUG INFO</h2>
+<p><b>Access Token:</b></p>
+<textarea cols="80" rows="4" readonly wrap="soft">
+{{access_token}}
+</textarea>
+<p><b>ID Token:</b></p>
+<textarea cols="80" rows="4" readonly wrap="soft">
+{{id_token}}
+</textarea>
