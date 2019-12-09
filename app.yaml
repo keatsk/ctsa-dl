@@ -1,0 +1,29 @@
+runtime: nodejs10
+env_variables:
+  PAGE_TITLE: "Login Check"
+  # https://gsuite-common.appspot.com
+  ## Host name and port for the client web app
+  #HOST_NAME=gsuite-common.appspot.com
+  HOST_NAME: "0.0.0.0"
+  #PORT: "8081"
+  PROTOCOL: "http"
+  ## The redirect URI is the address where the OIDC provider redirects to the client after login
+  ## NOTE: the redirect_uri must be registered as a callback URL on the OP.
+  ## NOTE: the spec requires using https protocol.
+  #OIDC_REDIRECT_URI: "https://gsuite-common.appspot.com/oauth/callback"
+  OIDC_REDIRECT_URI: "https://app.ctsa.io/oauth/callback"
+  ## NOTE: The post_logout_redirect_uri must also be registered on the OP.
+  #POST_LOGOUT_REDIRECT_URI: "https://gsuite-common.appspot.com"
+  POST_LOGOUT_REDIRECT_URI: "https://app.ctsa.io"
+  ## OIDC Base URI is the address of the OIDC server
+  OIDC_BASE_URI: "https://a.labshare.org/_api/auth/ncats"
+  ## OIDC Client ID and Client Secret come from the Admin UI after registering the client.
+  OIDC_CLIENT_ID: "ctsa-login-check"
+  ## A-CI.LS
+  #OIDC_CLIENT_SECRET: "15594cad-0969-4203-a7fd-f8729d098d5b"
+  ## A.LS
+  OIDC_CLIENT_SECRET: "7f4a822b-0632-11ea-a8a0-0242ac120003"
+automatic_scaling:
+  min_idle_instances: 1
+#inbound_services:
+#- warmup

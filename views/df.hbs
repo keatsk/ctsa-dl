@@ -1,0 +1,81 @@
+<script>
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
+
+  function loadDF() {
+    var df = getUrlParameter("df");
+    if (df) {
+      window.top.location.href = df;
+    } else {
+      alert("Error: No discussion forum was specified.");
+    }
+  }
+</script>
+<div
+  style="margin:auto; max-width: 800px; border-style:inset; padding: 8px; text-align: center; background-color:white; font-family: Verdana, Calibri;">
+  <div>
+    <img src="/ncats-logo.png" title="NCATS logo" />
+    <h1>Welcome to the CTSA Discussion Forums</h1>
+    <div style="float: left;">
+      <b>Returning users:</b> Please click “continue” to proceed.
+    </div>
+    <br><br>
+    <div style="float: left;">
+      <button class="btn" onclick="loadDF();">CONTINUE</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div style="text-align: left;">
+      <b>New users: </b>
+      <br>
+      You will need an authorized account in order to access this site. See options below:
+      <br><br>
+      <ul>
+        <li>
+          <b>Can I use my organization’s credentials?</b>
+          <br>
+          For CTSA Program hub institutions that are part of the <a href="https://www.incommon.org/federation"
+            target="_blank" title="visit the InCommon Federation site">InCommon Federation</a>, use your organization's
+          login.
+          <br><br>
+          <a href="https://www.incommon.org/federation/incommon-federation-entities/" target="_blank"
+            title="Click here to see the list of InCommon identity providers">[Check to find out if your organization is
+            an InCommon participant]</a>
+          <br>
+          <br>
+          Click the "continue" button and then select your organization on the next page.
+        </li>
+      </ul>
+      <div style="float: left;">
+        <button class="btn" onclick="loadDF();">CONTINUE</button>
+      </div>
+      <br><br><br>
+      <ul>
+        <li>
+          <b>Can I use another account?</b>
+          <br>
+          If your organization is not part of the InCommon Federation, please send a request to
+          <a href="mailto:support@ctsa.io?subject=Request for access to CTSA Discussion Forum"
+            title="Email support to request access">support@ctsa.io</a>
+          with another Gmail account that you wish to use and we will respond.
+        </li>
+      </ul>
+
+      <div style="border-width: medium; border-style:ridge; background-color:aliceblue ">
+        <b>Troubleshooting</b>
+        <br><br>
+        Sometimes it takes a while for Google to set up a new account. If you are prompted for a Google password for
+        your new CTSA.IO account, please wait a few moments and try again. (Use your browser’s back button to return to
+        this page and click "continue" again.) Please wait and try a couple of times. If you are still not able to log
+        in without a password prompt, send an email to <a
+          href="mailto:support@ctsa.io?subject=Problem logging into CTSA Discussion Forums">support@ctsa.io</a> and we
+        will investigate the issue and respond to you directly.
+      </div>
+    </div>
+  </div>
+</div>
