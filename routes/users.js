@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   console.log(req.user)
 
   res.render('users', {
-    title: 'Users',
+    title: 'Login Success',
     user: req.user
   });
 });
@@ -29,8 +29,8 @@ router.get('/profile', function(req, res, next) {
     }
   },function(err, respose, body){
 
-    console.log('User Info')
-    console.log(body);
+    //console.log('User Info')
+    //console.log(body);
     const accessToken = jwtDecode(req.session.accessToken);
     const idToken = jwtDecode(req.session.idToken);
 

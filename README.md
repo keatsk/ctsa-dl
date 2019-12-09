@@ -20,7 +20,7 @@ module for managing user authentication.
 In order to run this sample you need to setup a Web app in the client configuration section of the admin UI for LabShare Auth.  
 
 1. Clone this repo
-2. Rename `.env.sample` to `.env` and update the **client_id** and
+2. Rename `sample.env` to `.env` and update the **client_id** and
 **client_secret** you obtained from LSAuth as well as the Redirect Uri of your local site.
 
 * _Make sure that the Redirect URI matches what you specified in the admin UI. NOTE: the redirect URI must use HTTPS_

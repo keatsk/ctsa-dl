@@ -1,19 +1,30 @@
-<div class="top-nav" >
-<a href="/users/profile">Profile</a> | <a href="/logout">Logout</a>
+<div style="margin:auto; max-width: 600px; border-style:inset; padding: 8px; text-align: center; background-color: aliceblue; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 18px;">
+<h1>Success!</h1>
+<div style="text-align: left;">
+<div> 
+  You have successfully logged in as {{user.displayName}}.
+  <br>
+  <br>
+  Thank you for your time. We look forward to working with you.
 </div>
-<h2> 
-  You are successfully signed in as: <b>{{user.displayName}}</b>
-</h2>
+  <!--
 <ul>
   <li>
     <p>
-      Try the <a href="/users/profile">profile</a> route to see the full profile for this user.
+      View your <a href="/users/profile">profile</a>.
     </p>
   </li>
   <li>
     <p>
-      Or <a href="/logout">logout</a> to destroy the local session and revoke the access
-      token on the OpenID provider (OP)
+      <a href="/logout">logout</a>
     </p>
   </li>
 </ul>
+-->
+    <br>
+    <br>
+    <div style="text-align: center;">
+    <a href="/logout" class="btn">LOGOUT</a>
+  </div>
+  </div>
+</div>

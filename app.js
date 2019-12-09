@@ -16,6 +16,7 @@ var OidcStrategy = require('passport-openidconnect').Strategy;
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var df = require('./routes/df');
 
 var app = express();
 // Get the base URI for the OIDC provider
@@ -33,15 +34,15 @@ request(`${OIDC_BASE_URI}/.well-known/openid-configuration`,
   (err, res, body) => {
     if (err) { throw Error(err); }
     issuer = body.issuer;
-    console.log(`issuer: ${issuer}`);
+    //console.log(`issuer: ${issuer}`);
     authorizationURL = body.authorization_endpoint;
-    console.log(`authorization_endpoint: ${authorizationURL}`);
+    //console.log(`authorization_endpoint: ${authorizationURL}`);
     userInfoURL = body.userinfo_endpoint;
-    console.log(`user_info_endpoint: ${userInfoURL}`);
+    //console.log(`user_info_endpoint: ${userInfoURL}`);
     tokenURL = body.token_endpoint;
-    console.log(`tokenURL: ${tokenURL}`);
+    //console.log(`tokenURL: ${tokenURL}`);
     endSessionURL = body.end_session_endpoint;
-    console.log(`end_session_endpoint: ${endSessionURL}`);
+    //console.log(`end_session_endpoint: ${endSessionURL}`);
     // configure the Passport authentication middleware
     configPassport();
     // configure the Express routes
@@ -66,11 +67,11 @@ function configPassport() {
       passReqToCallback: true
     },
     function (req, issuer, userId, profile, accessToken, refreshToken, params, cb) {
-      console.log('issuer:', issuer);
-      console.log('userId:', userId);
-      console.log('accessToken:', accessToken);
-      console.log('refreshToken:', refreshToken);
-      console.log('params:', params);
+      //console.log('issuer:', issuer);
+      //console.log('userId:', userId);
+      //console.log('accessToken:', accessToken);
+      //console.log('refreshToken:', refreshToken);
+      //console.log('params:', params);
 
       // Store the Access Token and ID Token in the request session 
       req.session.accessToken = accessToken;
@@ -105,6 +106,7 @@ function configExpress() {
   }));
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, 'public')));
+  //app.use(express.static('public'));
 
   // Passport requires session to persist the authentication
   // so were using express-session for this example
@@ -118,8 +120,14 @@ function configExpress() {
   // Initialize Passport
   app.use(passport.initialize());
   app.use(passport.session());
-
+  
   app.use('/', index);
+  app.get('/df', df);
+  // // Warmup handler for GCP app engine
+  // app.get('/_ah/warmup', (req, res) => {
+  //   // Handle your warmup logic. Initiate db connection, etc.
+  //   res.send("warmup call received.");
+  // });
   // Only allow authenticated users to access the /users route
   app.use('/users', 
     function(req, res, next) {

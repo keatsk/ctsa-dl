@@ -1,3 +1,21 @@
-<h1>{{message}}</h1>
-<h2>{{error.status}}</h2>
-<pre>{{error.stack}}</pre>
+<div
+    style="margin:auto; max-width: 600px; border-style:inset; padding: 8px; text-align: center; background-color: aliceblue; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 14px;">
+    <img src="/ncats-logo.png" title="NCATS logo" />
+    <h1>Error</h1>
+    <div style="text-align: left;">
+        <p>
+            An unexpected error has occurred. See details below:
+        </p>
+        <h1>{{message}}</h1>
+        <h2>{{error.status}}</h2>
+        <pre>{{error.stack}}</pre>
+        <hr>
+        If this issue persists, please email us at
+        <a href="mailto:support@ctsa.io">support@ctsa.io</a>.
+        <br>
+        Include details such as first and last name, institution name,
+        email address, the time of the attempt, and any error message you received.
+        A screen capture would also be helpful.
+        <hr>
+    </div>
+</div>

@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'LabShare Auth OpenId Connect Sample' });
+  res.render('index', { title: process.env.PAGE_TITLE });
 });
 
 module.exports = router;
