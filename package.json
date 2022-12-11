@@ -12,7 +12,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "dotenv": "^5.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.15.6",
     "hbs": "^4.0.4",
     "jwt-decode": "^2.2.0",
